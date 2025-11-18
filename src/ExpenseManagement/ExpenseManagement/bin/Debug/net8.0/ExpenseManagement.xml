@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExpenseManagement</name>
+    </assembly>
+    <members>
+        <member name="M:ExpenseManagement.Controllers.ExpensesController.GetExpenses(System.String)">
+            <summary>
+            Get all expenses
+            </summary>
+            <param name="filter">Optional filter string to search expenses</param>
+            <returns>List of expenses</returns>
+        </member>
+        <member name="M:ExpenseManagement.Controllers.ExpensesController.GetPendingExpenses">
+            <summary>
+            Get pending expenses for approval
+            </summary>
+            <returns>List of pending expenses</returns>
+        </member>
+        <member name="M:ExpenseManagement.Controllers.ExpensesController.CreateExpense(ExpenseManagement.Controllers.CreateExpenseRequest)">
+            <summary>
+            Create a new expense
+            </summary>
+            <param name="request">Expense creation request</param>
+            <returns>Created expense ID</returns>
+        </member>
+        <member name="M:ExpenseManagement.Controllers.ExpensesController.ApproveExpense(System.Int32)">
+            <summary>
+            Approve an expense
+            </summary>
+            <param name="id">Expense ID</param>
+            <returns>Success status</returns>
+        </member>
+        <member name="M:ExpenseManagement.Controllers.ExpensesController.GetCategories">
+            <summary>
+            Get expense categories
+            </summary>
+            <returns>List of categories</returns>
+        </member>
+    </members>
+</doc>

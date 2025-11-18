@@ -1,0 +1,93 @@
+@page
+@model ApproveExpensesModel
+@{
+    ViewData["Title"] = "Approve Expenses";
+}
+
+<div class="container">
+    <div class="card shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h3 class="mb-0">✅ Approve Expenses</h3>
+        </div>
+        <div class="card-body">
+            @if (Model.SuccessMessage != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    ✅ @Model.SuccessMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+
+            <h5 class="mb-3">Pending expenses:</h5>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <form method="get" class="d-flex">
+                        <input type="text" class="form-control me-2" name="filter" placeholder="Filter pending expenses..." 
+                               value="@Model.Filter" />
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                        @if (!string.IsNullOrWhiteSpace(Model.Filter))
+                        {
+                            <a href="/ApproveExpenses" class="btn btn-outline-secondary ms-2">Clear</a>
+                        }
+                    </form>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead class="table-success">
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.PendingExpenses.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center text-muted py-4">
+                                    <p class="mb-0">🎉 No pending expenses to approve!</p>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @foreach (var expense in Model.PendingExpenses)
+                            {
+                                <tr>
+                                    <td>@expense.ExpenseDate.ToString("dd/MM/yyyy")</td>
+                                    <td>@expense.CategoryName</td>
+                                    <td class="text-end">£@expense.AmountGBP.ToString("N2")</td>
+                                    <td>@(expense.Description ?? "-")</td>
+                                    <td>
+                                        <form method="post" class="d-inline">
+                                            <input type="hidden" name="expenseId" value="@expense.ExpenseId" />
+                                            <button type="submit" class="btn btn-sm btn-success" 
+                                                    onclick="return confirm('Approve this expense for £@expense.AmountGBP.ToString("N2")?');">
+                                                ✅ Approve
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            @if (Model.PendingExpenses.Count > 0)
+            {
+                <div class="mt-3">
+                    <p class="text-muted">
+                        Total pending: @Model.PendingExpenses.Count expenses | 
+                        Total amount: £@Model.PendingExpenses.Sum(e => e.AmountGBP).ToString("N2")
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</div>

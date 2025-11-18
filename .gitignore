@@ -1,0 +1,31 @@
+# Build outputs
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+
+# Application publish folder (for zip creation only)
+src/**/app/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache/options
+.vs/
+
+# NuGet Packages
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# dotnet
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Others
+.DS_Store
+Thumbs.db
+*.log
