@@ -1,0 +1,75 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4">💼 Expense Management System</h1>
+            <p class="lead">Modern cloud-native expense tracking and approval system</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card border-primary">
+                <div class="card-body text-center">
+                    <h5 class="card-title">📝 Add Expense</h5>
+                    <p class="card-text">Submit a new expense for approval</p>
+                    <a href="/AddExpense" class="btn btn-primary">Add New Expense</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card border-info">
+                <div class="card-body text-center">
+                    <h5 class="card-title">📋 View Expenses</h5>
+                    <p class="card-text">View and manage your expenses</p>
+                    <a href="/Expenses" class="btn btn-info">View Expenses</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title">✅ Approve Expenses</h5>
+                    <p class="card-text">Review and approve pending expenses</p>
+                    <a href="/ApproveExpenses" class="btn btn-success">Approve Expenses</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-secondary text-white">
+                    <h5 class="mb-0">📚 API Documentation</h5>
+                </div>
+                <div class="card-body">
+                    <p>Access the complete API documentation with interactive testing capabilities:</p>
+                    <a href="/swagger" class="btn btn-outline-secondary">View Swagger API Docs</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="alert alert-info">
+                <h5>ℹ️ About This System</h5>
+                <ul>
+                    <li>Built with ASP.NET Core 8.0 and Razor Pages</li>
+                    <li>Deployed on Azure App Service</li>
+                    <li>Secured with Azure Managed Identity for database access</li>
+                    <li>RESTful API with Swagger documentation</li>
+                    <li>Responsive, modern UI using Bootstrap 5</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
